@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Bg color changer</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        const changeStart = function(){
+            const val = "0123456789ABCDEF"
+            let color = "#"
+            for(let i=0; i<6; i++){
+                color+= val[Math.floor(Math.random()*16)];
+            }
+            console.log(color)
+            document.querySelector("body").style.background = color;
+        }
+
+        let continuousChange=null;
+        function change(){
+            continuousChange = setInterval(changeStart, 500)
+        }
+
+        let changeStop= function(){
+            clearInterval(continuousChange)
+        }
+
+
+        document.querySelector("#start").addEventListener("click", change)
+
+        document.querySelector("#stop").addEventListener("click", changeStop)
+    </script>
+</body>
+</html>
